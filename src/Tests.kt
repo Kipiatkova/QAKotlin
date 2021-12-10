@@ -1,22 +1,26 @@
 import java.util.*
 
-class Tests (var checkNumber: String, var checkName: Int, val comparingName: String, var checkStr: Int, var stringArray: Int, var numArr: Int, var taskNumber: Int) {
-    fun nameHello () {
-        print("Введите число")
-        var checkNumber = Scanner(System.`in`).nextInt()
-        if (checkNumber > 7)
-            println("Привет")
+fun nameHello(): Int {
+    print("Введите число")
+    val checkNumber = Scanner(System.`in`).nextInt()
+    if (checkNumber > 7)
+        println("Привет")
+    return checkNumber
 
-    }
-    fun whatName () {
-        print("Введите имя")
-        var checkName = Scanner(System.`in`).nextLine()
-        val comparingName = "Вячеслав"
-        if (checkName == comparingName)
+}
+
+fun whatName() {
+    print("Введите имя")
+    val checkName = Scanner(System.`in`).nextLine()
+    val comparingName = "Вячеслав"
+    if (comparingName.equals("Вячеслав", ignoreCase = true) || comparingName.equals("вячеслав", ignoreCase = true))
+    if (checkName == comparingName)
             println("Привет, Вячеслав")
         else
             println("Нет такого имени")
-    }
+
+}
+
     fun arrCheck (){
         println("Введите число")
         var checkStr = Scanner(System.`in`).nextLine()
@@ -26,20 +30,32 @@ class Tests (var checkNumber: String, var checkName: Int, val comparingName: Str
             println(numArr)
         }
     }
-}
+
 fun taskSelection() {
     println("Введите номер задачи: \n")
     val scanner = Scanner(System.`in`).nextLine()
-    var taskNumber: Int = scanner.length()
-    if (taskNumber == 1) {
-        println("nameHello")
-    } else if (taskNumber == 2) {
-        println("whatName")
-    } else if (taskNumber == 3) {
-        println("arrCheck")
-    } else {
-        println("Нет такой задачи")
+    val taskNumber: List<String> = scanner.split("")
+    val number: Int = taskNumber.size
+    when (number) {
+        1 -> {
+            nameHello()
+        }
+        2 -> {
+            whatName()
+        }
+        3 -> {
+            arrCheck()
+        }
+        else -> {
+            println("Нет такой задачи")
+        }
     }
+
 }
+
+
+
+
+
 
 
